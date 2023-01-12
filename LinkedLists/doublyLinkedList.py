@@ -104,6 +104,13 @@ class DoublyLinkedList:
                     index += 1
                 tempNode.next = tempNode.next.next
                 tempNode.next.prev = tempNode
+    
+    def deleteWholeDLL(self):
+        if self.head is None:
+            return 'CSLL does not exist'
+        else:
+            self.head = None
+            self.tail = None
 
 
 doublyLinkedList = DoublyLinkedList()
@@ -120,4 +127,6 @@ print()
 print(doublyLinkedList.searchDLL(2))
 print()
 doublyLinkedList.deleteNode(2)
+print([node.value for node in doublyLinkedList])
+doublyLinkedList.deleteWholeDLL()
 print([node.value for node in doublyLinkedList])
