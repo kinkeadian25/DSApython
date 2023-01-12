@@ -78,6 +78,33 @@ class DoublyLinkedList:
                 tempNode = tempNode.next
             return 'node does not exist'
 
+    def deleteNode(self, location):
+        if self.head is None:
+            return 'the DLL does not exist'
+        else:
+            if location == 0:
+                if self.head == self.tail:
+                    self.head = None
+                    self.tail = None
+                else:
+                    self.head = self.head.next
+                    head.prev = None
+            elif location == 1:
+                if self.head == self.tail:
+                    self.head = None
+                    self.tail = None
+                else:
+                    self.tail = self.tail.prev
+                    self.tail.next = None
+            else:
+                tempNode = self.head
+                index = 0
+                while index < location - 1:
+                    tempNode = tempNode.next
+                    index += 1
+                tempNode.next = tempNode.next.next
+                tempNode.next.prev = tempNode
+
 
 doublyLinkedList = DoublyLinkedList()
 doublyLinkedList.createDLL(5)
@@ -91,3 +118,6 @@ doublyLinkedList.traverseDLL()
 doublyLinkedList.reverseTraverseDLL()
 print()
 print(doublyLinkedList.searchDLL(2))
+print()
+doublyLinkedList.deleteNode(2)
+print([node.value for node in doublyLinkedList])
